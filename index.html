@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV - Nguyễn Lâm Vũ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- 👇 Phần tử particles-js -->
+  <div id="particles-js"></div>
+
+<header>
+  <h1 class="blink-text">Nguyen Lam Vu</h1>
+  <p>Thực tập sinh IT</p>
+  <p><a href="mailto:lamvufc37@gmail.com">lamvufc37@gmail.com</a> | 0347711188</p>
+  <p>39/1, Đường 22, Linh Đông, Thủ Đức, TPHCM</p>
+  <p><a href="https://facebook.com/nglaamvu.24" target="_blank">Facebook cá nhân</a></p>
+</header>
+
+
+  <section class="fade-in" data-delay="0s">
+    <h2>Mục tiêu nghề nghiệp</h2>
+    <p>Học hỏi thêm kiến thức, trải nghiệm môi trường làm việc của doanh nghiệp/công ty. Trở thành một chuyên gia trong
+      lĩnh vực web.</p>
+  </section>
+
+  <section class="fade-in" data-delay="0.2s">
+    <h2>Học vấn</h2>
+    <p><strong>Ngành:</strong> Công Nghệ Thông Tin</p>
+    <p><strong>Trường:</strong> Cao đẳng Công Nghệ Thủ Đức</p>
+    <p><strong>Thời gian:</strong> 10/2022 - 06/2024</p>
+  </section>
+
+  <section class="fade-in" data-delay="0.4s">
+    <h2>Hoạt động</h2>
+    <ul>
+      <li>Tham gia các hoạt động thể thao tại trường (11/2022 - 05/2024)</li>
+      <li>Làm thêm part-time sau giờ học (06/2023 - 05/2024)</li>
+    </ul>
+  </section>
+
+  <section class="fade-in" data-delay="0.6s">
+    <h2>Kỹ năng</h2>
+    <ul>
+      <li>C#</li>
+      <li>HTML/CSS</li>
+      <li>JavaScript</li>
+      <li>SQL</li>
+    </ul>
+  </section>
+
+  <section class="fade-in" data-delay="0.8s">
+    <h2>Dự án</h2>
+    <ul>
+      <li><strong>2023:</strong> Leader đồ án FootballQuiz (môn lập trình di động 1)</li>
+      <li><strong>2024:</strong> Leader đồ án Frontend web 2</li>
+    </ul>
+  </section>
+
+  <section class="fade-in" data-delay="1s">
+    <h2>Sở thích</h2>
+    <p>Cầu lông, đá bóng</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Nguyễn Lâm Vũ</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const elements = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show");
+          }
+        });
+      }, { threshold: 0.1 });
+      elements.forEach((el) => observer.observe(el));
+    });
+
+    document.addEventListener('click', function (e) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤️';
+      heart.style.left = (e.clientX - 12) + 'px';
+      heart.style.top = (e.clientY - 12) + 'px';
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 1000);
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      const elements = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const delay = entry.target.getAttribute('data-delay') || '0s';
+          if (entry.isIntersecting) {
+            entry.target.style.transitionDelay = delay;
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show");
+            entry.target.style.transitionDelay = '0s';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach((el) => observer.observe(el));
+    });
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5 },
+          size: { value: 3 },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1
+          },
+          move: { enable: true, speed: 2 }
+        }
+      });
+    });
+  </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const blinkTextElements = document.querySelectorAll('.blink-text');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('blink-text-animation');
+        } else {
+          entry.target.classList.remove('blink-text-animation');
+        }
+      });
+    });
+
+    blinkTextElements.forEach(element => {
+      const characters = element.textContent.split('');
+      element.innerHTML = characters.map((char, i) =>
+        `<span style="animation-delay: ${0.05 * i}s;">${char}</span>`
+      ).join('');
+      observer.observe(element);
+    });
+  });
+</script>
+
+</body>
+
+</html>
